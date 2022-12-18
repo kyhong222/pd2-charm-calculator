@@ -9,6 +9,7 @@ function CharactorSelector(props) {
 
   const handleChange = (event) => {
     setCharactor(event.target.value);
+    props.setSelected(event.target.value);
   };
   const classArray = [
     "Amazon",
