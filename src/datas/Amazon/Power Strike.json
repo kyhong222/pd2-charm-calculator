@@ -1,6 +1,6 @@
 {
   "skillName": "Power Strike",
-  "min": [
+  "Lightning Damage (min)": [
     "1",
     "1",
     "1",
@@ -62,7 +62,7 @@
     "1",
     "1"
   ],
-  "max": [
+  "Lightning Damage (max)": [
     "1",
     "4",
     "7",
@@ -124,7 +124,7 @@
     "1233",
     "1264"
   ],
-  "min2": [
+  "Nova Damage (min)": [
     "1",
     "1",
     "1",
@@ -186,7 +186,7 @@
     "1",
     "1"
   ],
-  "max2": [
+  "Nova Damage (max)": [
     "3",
     "7",
     "11",
