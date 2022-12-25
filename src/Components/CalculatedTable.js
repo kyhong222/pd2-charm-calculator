@@ -150,7 +150,7 @@ function CalculatedTable(props) {
         valueArray.push(`${Number(props.skillLevel)} + (${i})`);
       }
     }
-    return createData("skill levels(+ skiller)", valueArray);
+    return createData("Skill levels(+ skiller)", valueArray);
   };
 
   const MasteryRow = () => {
@@ -159,7 +159,7 @@ function CalculatedTable(props) {
       valueArray.push(`${Number(props.masteries)}% + (${(9 - i) * 8}%)`);
     }
 
-    return createData("elemental mastery(+ 8% large charm)", valueArray);
+    return createData("Elemental mastery(+ 8% large charm)", valueArray);
   };
 
   const DmgRow = (key) => {
@@ -171,7 +171,6 @@ function CalculatedTable(props) {
     ) {
       valueArray = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     } else {
-      // const skill = skillDatas[props.skillName];
       valueArray = skill()[key].slice(
         Number(props.skillLevel) - 1,
         Number(props.skillLevel) + 9
@@ -209,9 +208,9 @@ function CalculatedTable(props) {
       );
     }
 
-    let title = "calculated damage";
+    let title = "Calculated damage";
     if (key1 !== "") {
-      title = `calculated ${key1.slice(0, key1.length - 6)}`;
+      title = `Calculated ${key1.slice(0, key1.length - 6)}`;
     }
 
     return createCalculatedData(title, minArray, maxArray);
@@ -245,9 +244,9 @@ function CalculatedTable(props) {
       );
     }
 
-    let title = "average damage";
+    let title = "Average damage";
     if (key1 !== "") {
-      title = `average ${key1.slice(0, key1.length - 6)}`;
+      title = `Average ${key1.slice(0, key1.length - 6)}`;
     }
 
     return createAverageData(title, minArray, maxArray);

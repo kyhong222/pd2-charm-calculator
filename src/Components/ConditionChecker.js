@@ -39,7 +39,7 @@ function ConditionChecker(props) {
     >
       <TextField
         id="filled-skill-level"
-        label="Skill Level"
+        label="Base Skill Level"
         type="number"
         InputLabelProps={{
           shrink: true,
@@ -49,7 +49,7 @@ function ConditionChecker(props) {
       />
       <TextField
         id="filled-elemental-mastery"
-        label="Elemental Mastery"
+        label="Base Elemental Mastery"
         type="number"
         InputLabelProps={{
           shrink: true,
@@ -59,7 +59,7 @@ function ConditionChecker(props) {
       />
       <TextField
         id="filled-synergies"
-        label="Synergies"
+        label="Synergies(%)"
         type="number"
         InputLabelProps={{
           shrink: true,
