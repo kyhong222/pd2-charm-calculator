@@ -103,6 +103,9 @@ function CalculatedTable(props) {
   };
 
   const calculateDmg = (dmg, synergies, mastery) => {
+    if (dmg === 1) {
+      return 1;
+    }
     return Number(
       (dmg * (1 + synergies / 100) * (1 + mastery / 100)).toFixed(1)
     );
