@@ -249,9 +249,9 @@
     "2517"
   ],
   "synergies_result": [
-    ["Lightning Strike", 20],
-    ["Lightning Strike", 20],
-    ["Lightning Bolt", 20],
-    ["Lightning Bolt", 20]
+    ["Lightning Strike to lightning damage", 20],
+    ["Lightning Strike to nova damage", 20],
+    ["Lightning Bolt to lightning damage", 20],
+    ["Lightning Bolt to nova damage", 20]
   ]
 }
