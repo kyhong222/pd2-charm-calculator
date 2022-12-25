@@ -11,6 +11,19 @@ import Paper from "@mui/material/Paper";
 import skillDatas from "../datas/skillDatas";
 
 function CalculatedTable(props) {
+  const skill = () => {
+    if (props.skillName === "Select Skill") {
+      return {};
+    }
+    return skillDatas[props.skillName];
+  };
+  const skillDmgKeys = () => {
+    if (props.skillName === "Select Skill") {
+      return ["", ""];
+    }
+    return Object.keys(skill()).slice(1, Object.keys(skill()).length - 1);
+  };
+
   const createData = (name, values) => {
     return (
       <TableRow>
@@ -137,7 +150,7 @@ function CalculatedTable(props) {
         valueArray.push(`${Number(props.skillLevel)} + (${i})`);
       }
     }
-    return createData("skill levels(+skiller)", valueArray);
+    return createData("skill levels(+ skiller)", valueArray);
   };
 
   const MasteryRow = () => {
@@ -149,7 +162,7 @@ function CalculatedTable(props) {
     return createData("elemental mastery(+ 8% large charm)", valueArray);
   };
 
-  const MinDmgRow = () => {
+  const DmgRow = (key) => {
     let valueArray;
     if (
       props.charactorName === "" ||
@@ -158,36 +171,17 @@ function CalculatedTable(props) {
     ) {
       valueArray = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     } else {
-      const skill = skillDatas[props.skillName];
-      valueArray = skill.min.slice(
+      // const skill = skillDatas[props.skillName];
+      valueArray = skill()[key].slice(
         Number(props.skillLevel) - 1,
         Number(props.skillLevel) + 9
       );
     }
-
-    return createData("min damage", valueArray);
+    return createData(key, valueArray);
   };
 
-  const MaxDmgRow = () => {
-    let valueArray;
-    if (
-      props.charactorName === "" ||
-      props.skillName === "Select Skill" ||
-      Number(props.skillLevel) === 0
-    ) {
-      valueArray = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-    } else {
-      const skill = skillDatas[props.skillName];
-      valueArray = skill.max.slice(
-        Number(props.skillLevel) - 1,
-        Number(props.skillLevel) + 9
-      );
-    }
-
-    return createData("max damage", valueArray);
-  };
-
-  const CalculatedDmgRow = () => {
+  const CalculatedDmgRow = (key1, key2) => {
+    console.log(key1, key2);
     let minArray;
     if (
       props.charactorName === "" ||
@@ -196,8 +190,7 @@ function CalculatedTable(props) {
     ) {
       minArray = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     } else {
-      const skill = skillDatas[props.skillName];
-      minArray = skill.min.slice(
+      minArray = skill()[key1].slice(
         Number(props.skillLevel) - 1,
         Number(props.skillLevel) + 9
       );
@@ -210,17 +203,21 @@ function CalculatedTable(props) {
     ) {
       maxArray = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     } else {
-      const skill = skillDatas[props.skillName];
-      maxArray = skill.max.slice(
+      maxArray = skill()[key2].slice(
         Number(props.skillLevel) - 1,
         Number(props.skillLevel) + 9
       );
     }
 
-    return createCalculatedData("calculated damage", minArray, maxArray);
+    let title = "calculated damage";
+    if (key1 !== "") {
+      title = `calculated ${key1.slice(0, key1.length - 6)}`;
+    }
+
+    return createCalculatedData(title, minArray, maxArray);
   };
 
-  const AverageDmgRow = () => {
+  const AverageDmgRow = (key1, key2) => {
     let minArray;
     if (
       props.charactorName === "" ||
@@ -229,8 +226,7 @@ function CalculatedTable(props) {
     ) {
       minArray = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     } else {
-      const skill = skillDatas[props.skillName];
-      minArray = skill.min.slice(
+      minArray = skill()[key1].slice(
         Number(props.skillLevel) - 1,
         Number(props.skillLevel) + 9
       );
@@ -243,14 +239,18 @@ function CalculatedTable(props) {
     ) {
       maxArray = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     } else {
-      const skill = skillDatas[props.skillName];
-      maxArray = skill.max.slice(
+      maxArray = skill()[key2].slice(
         Number(props.skillLevel) - 1,
         Number(props.skillLevel) + 9
       );
     }
 
-    return createAverageData("average damage", minArray, maxArray);
+    let title = "average damage";
+    if (key1 !== "") {
+      title = `average ${key1.slice(0, key1.length - 6)}`;
+    }
+
+    return createAverageData(title, minArray, maxArray);
   };
 
   const SkillTableHead = () => {
@@ -275,14 +275,30 @@ function CalculatedTable(props) {
 
   const SkillTableBody = () => {
     return (
-      <TableBody>
-        <SkillLevelRow></SkillLevelRow>
-        <MasteryRow></MasteryRow>
-        <MinDmgRow></MinDmgRow>
-        <MaxDmgRow></MaxDmgRow>
-        <CalculatedDmgRow></CalculatedDmgRow>
-        <AverageDmgRow></AverageDmgRow>
-      </TableBody>
+      <div>
+        <TableBody>
+          <SkillLevelRow></SkillLevelRow>
+          <MasteryRow></MasteryRow>
+          {props.skillName === "Select Skill" ? (
+            <></>
+          ) : (
+            skillDmgKeys().map((key) => DmgRow(key))
+          )}
+          {CalculatedDmgRow(skillDmgKeys()[0], skillDmgKeys()[1])}
+          {skillDmgKeys().length > 2 ? (
+            CalculatedDmgRow(skillDmgKeys()[2], skillDmgKeys()[3])
+          ) : (
+            <></>
+          )}
+          {AverageDmgRow(skillDmgKeys()[0], skillDmgKeys()[1])}
+          {skillDmgKeys().length > 2 ? (
+            AverageDmgRow(skillDmgKeys()[2], skillDmgKeys()[3])
+          ) : (
+            <></>
+          )}
+          {/* <AverageDmgRow></AverageDmgRow> */}
+        </TableBody>
+      </div>
     );
   };
 
