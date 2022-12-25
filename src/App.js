@@ -1,6 +1,7 @@
 import ConditionChecker from "./Components/ConditionChecker";
 import CalculatedTable from "./Components/CalculatedTable";
 import ClassAndSkillSelector from "./Components/ClassAndSkillSelector/ClassAndSkillSelector";
+import SkillInfo from "./Components/SkillInfo";
 import React from "react";
 
 function App() {
@@ -22,6 +23,11 @@ function App() {
         synergies={setCalSynergies}
         masteries={setCalMasteries}
       />
+      {calSkillName !== "Select Skill" ? (
+        <SkillInfo skillName={calSkillName}></SkillInfo>
+      ) : (
+        <></>
+      )}
       <CalculatedTable
         charactorName={charactorName}
         skillName={calSkillName}
