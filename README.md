@@ -4,7 +4,7 @@ Visit on https://kyhong222.github.io/pd2-charm-calculator/
 
 ---
 
-## Send feedbacks to me
+## Send feedbacks & bug reports to me
 
 Discord: DayDream2#9826
 
