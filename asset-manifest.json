@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/pd2-charm-calculator/static/js/main.ba8aa39f.js",
+    "main.js": "/pd2-charm-calculator/static/js/main.69b89bc0.js",
     "index.html": "/pd2-charm-calculator/index.html",
-    "main.ba8aa39f.js.map": "/pd2-charm-calculator/static/js/main.ba8aa39f.js.map"
+    "main.69b89bc0.js.map": "/pd2-charm-calculator/static/js/main.69b89bc0.js.map"
   },
   "entrypoints": [
-    "static/js/main.ba8aa39f.js"
+    "static/js/main.69b89bc0.js"
   ]
 }
