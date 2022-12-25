@@ -24,16 +24,18 @@ function CalculatedTable(props) {
         <TableCell>{values[6]}</TableCell>
         <TableCell>{values[7]}</TableCell>
         <TableCell>{values[8]}</TableCell>
+        <TableCell>{values[9]}</TableCell>
       </TableRow>
     );
   };
+
   const createCalculatedData = (name, values1, values2) => {
     const minArray = [];
     const maxArray = [];
-    for (let i = 0; i < 9; i++) {
+    for (let i = 0; i < 10; i++) {
       const min = Number(values1[i]);
       const max = Number(values2[i]);
-      const mastery = Number(props.masteries) + 8 * (8 - i);
+      const mastery = Number(props.masteries) + 8 * (9 - i);
       const synergies = Number(props.synergies);
 
       minArray.push(Number(calculateDmg(min, synergies, mastery)));
@@ -52,16 +54,18 @@ function CalculatedTable(props) {
         <TableCell>{`${minArray[6]}-${maxArray[6]}`}</TableCell>
         <TableCell>{`${minArray[7]}-${maxArray[7]}`}</TableCell>
         <TableCell>{`${minArray[8]}-${maxArray[8]}`}</TableCell>
+        <TableCell>{`${minArray[9]}-${maxArray[9]}`}</TableCell>
       </TableRow>
     );
   };
+
   const createAverageData = (name, values1, values2) => {
     const minArray = [];
     const maxArray = [];
-    for (let i = 0; i < 9; i++) {
+    for (let i = 0; i < 10; i++) {
       const min = Number(values1[i]);
       const max = Number(values2[i]);
-      const mastery = Number(props.masteries) + 8 * (8 - i);
+      const mastery = Number(props.masteries) + 8 * (9 - i);
       const synergies = Number(props.synergies);
 
       minArray.push(Number(calculateDmg(min, synergies, mastery)));
@@ -98,6 +102,9 @@ function CalculatedTable(props) {
         <TableCell>{`${((minArray[8] + maxArray[8]) / 2).toFixed(
           1
         )}`}</TableCell>
+        <TableCell>{`${((minArray[9] + maxArray[9]) / 2).toFixed(
+          1
+        )}`}</TableCell>
       </TableRow>
     );
   };
@@ -124,9 +131,9 @@ function CalculatedTable(props) {
   const SkillLevelRow = () => {
     let valueArray = [];
     if (props.skillLevel <= 0) {
-      valueArray = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+      valueArray = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     } else {
-      for (let i = 0; i < 9; i++) {
+      for (let i = 0; i < 10; i++) {
         valueArray.push(`${Number(props.skillLevel)} + (${i})`);
       }
     }
@@ -135,8 +142,8 @@ function CalculatedTable(props) {
 
   const MasteryRow = () => {
     const valueArray = [];
-    for (let i = 0; i < 9; i++) {
-      valueArray.push(`${Number(props.masteries)}% + (${(8 - i) * 8}%)`);
+    for (let i = 0; i < 10; i++) {
+      valueArray.push(`${Number(props.masteries)}% + (${(9 - i) * 8}%)`);
     }
 
     return createData("elemental mastery(+ 8% large charm)", valueArray);
@@ -148,7 +155,7 @@ function CalculatedTable(props) {
       props.skillName === "Select Skill" ||
       Number(props.skillLevel) === 0
     ) {
-      valueArray = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+      valueArray = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     } else {
       const skill = skillDatas[props.skillName];
       valueArray = skill.min.slice(
@@ -166,12 +173,12 @@ function CalculatedTable(props) {
       props.skillName === "Select Skill" ||
       Number(props.skillLevel) === 0
     ) {
-      valueArray = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+      valueArray = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     } else {
       const skill = skillDatas[props.skillName];
       valueArray = skill.max.slice(
         Number(props.skillLevel) - 1,
-        Number(props.skillLevel) + 8
+        Number(props.skillLevel) + 9
       );
     }
 
@@ -184,12 +191,12 @@ function CalculatedTable(props) {
       props.skillName === "Select Skill" ||
       Number(props.skillLevel) === 0
     ) {
-      minArray = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+      minArray = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     } else {
       const skill = skillDatas[props.skillName];
       minArray = skill.min.slice(
         Number(props.skillLevel) - 1,
-        Number(props.skillLevel) + 8
+        Number(props.skillLevel) + 9
       );
     }
     let maxArray;
@@ -198,12 +205,12 @@ function CalculatedTable(props) {
       props.skillName === "Select Skill" ||
       Number(props.skillLevel) === 0
     ) {
-      maxArray = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+      maxArray = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     } else {
       const skill = skillDatas[props.skillName];
       maxArray = skill.max.slice(
         Number(props.skillLevel) - 1,
-        Number(props.skillLevel) + 8
+        Number(props.skillLevel) + 9
       );
     }
 
@@ -216,12 +223,12 @@ function CalculatedTable(props) {
       props.skillName === "Select Skill" ||
       Number(props.skillLevel) === 0
     ) {
-      minArray = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+      minArray = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     } else {
       const skill = skillDatas[props.skillName];
       minArray = skill.min.slice(
         Number(props.skillLevel) - 1,
-        Number(props.skillLevel) + 8
+        Number(props.skillLevel) + 9
       );
     }
     let maxArray;
@@ -230,12 +237,12 @@ function CalculatedTable(props) {
       props.skillName === "Select Skill" ||
       Number(props.skillLevel) === 0
     ) {
-      maxArray = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+      maxArray = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     } else {
       const skill = skillDatas[props.skillName];
       maxArray = skill.max.slice(
         Number(props.skillLevel) - 1,
-        Number(props.skillLevel) + 8
+        Number(props.skillLevel) + 9
       );
     }
 
@@ -247,6 +254,7 @@ function CalculatedTable(props) {
       <TableHead>
         <TableRow>
           <StyledTableCell>{props.skillName}</StyledTableCell>
+          <StyledTableCell>{""}</StyledTableCell>
           <StyledTableCell>{""}</StyledTableCell>
           <StyledTableCell>{""}</StyledTableCell>
           <StyledTableCell>{""}</StyledTableCell>
@@ -272,9 +280,6 @@ function CalculatedTable(props) {
         <AverageDmgRow></AverageDmgRow>
       </TableBody>
     );
-
-    // createData("min damage", [1, 1, 1, 1, 1, 1, 1, 1, 1]),
-    // createData("max damage", [1, 1, 1, 1, 1, 1, 1, 1, 1]),
   };
 
   return (
