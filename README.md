@@ -14,4 +14,8 @@ Discord: DayDream2#9826
 
 ---
 
+- skill info(include synergies info) has been added.
+
+---
+
 - lightning min damage calculate bug has fixed.
