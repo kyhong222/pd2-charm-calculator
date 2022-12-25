@@ -25,20 +25,11 @@ function SkillInfo(props) {
     },
   }));
 
-  const rows = skillDatas[props.skillName].synergies_result.map((element) => {
-    return { name: element[0], value: `${element[1]}%` };
-  });
-
-  // [
-  //   { name: "1", value: "2" },
-  //   { name: "1", value: "2" },
-  // ];
-  // const skill = skillDatas[props.skillName].synergies_result;
-  // return [createData(skill[0], skill[1])];
-  // return skill.map((element) => {
-  //   return createData(element[0], element[1]);
-  // });
-  // };
+  const rows = skillDatas[props.skillName]["synergies_result"].map(
+    (element) => {
+      return { name: element[0], value: `${element[1]}%` };
+    }
+  );
 
   const SkillTableHead = () => {
     return (
