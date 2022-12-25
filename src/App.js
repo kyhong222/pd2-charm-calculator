@@ -9,8 +9,6 @@ function App() {
   const [calSynergies, setCalSynergies] = React.useState(0);
   const [calMasteries, setCalMasteries] = React.useState(0);
   const [charactorName, setCharactorName] = React.useState("");
-  // const [calMinDmg, setCalMinDmg] = React.useState(0);
-  // const [calMaxDmg, setCalMaxDmg] = React.useState(0);
 
   return (
     <div className="App">
@@ -30,8 +28,6 @@ function App() {
         skillLevel={calSkillLevel}
         synergies={calSynergies}
         masteries={calMasteries}
-        // minDmg={calMinDmg}
-        // maxDmg={calMaxDmg}
       />
     </div>
   );
