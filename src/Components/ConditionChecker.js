@@ -8,13 +8,25 @@ function ConditionChecker(props) {
   const [baseSynergies, setSynergiesMastery] = React.useState(0);
 
   const baseSkillChange = (event) => {
+    if (event.target.value <= 0) {
+      event.target.value = 0;
+    }
     setBaseSkillLevel(event.target.value);
+    props.skillLevel(event.target.value);
   };
   const baseMasteryChange = (event) => {
+    if (event.target.value <= 0) {
+      event.target.value = 0;
+    }
     setBaseMastery(event.target.value);
+    props.masteries(event.target.value);
   };
   const baseSynergiesChange = (event) => {
+    if (event.target.value <= 0) {
+      event.target.value = 0;
+    }
     setSynergiesMastery(event.target.value);
+    props.synergies(event.target.value);
   };
   return (
     <Box

@@ -4,16 +4,20 @@ import ClassAndSkillSelector from "./Components/ClassAndSkillSelector/ClassAndSk
 import React from "react";
 
 function App() {
-  const [calSkillName, setCalSkillName] = React.useState("");
+  const [calSkillName, setCalSkillName] = React.useState("Select Skill");
   const [calSkillLevel, setCalSkillLevel] = React.useState(0);
   const [calSynergies, setCalSynergies] = React.useState(0);
   const [calMasteries, setCalMasteries] = React.useState(0);
+  const [charactorName, setCharactorName] = React.useState("");
   // const [calMinDmg, setCalMinDmg] = React.useState(0);
   // const [calMaxDmg, setCalMaxDmg] = React.useState(0);
 
   return (
     <div className="App">
-      <ClassAndSkillSelector skillName={setCalSkillName} />
+      <ClassAndSkillSelector
+        skillName={setCalSkillName}
+        charactorName={setCharactorName}
+      />
       <ConditionChecker
         skillName={calSkillName}
         skillLevel={setCalSkillLevel}
@@ -21,6 +25,7 @@ function App() {
         masteries={setCalMasteries}
       />
       <CalculatedTable
+        charactorName={charactorName}
         skillName={calSkillName}
         skillLevel={calSkillLevel}
         synergies={calSynergies}

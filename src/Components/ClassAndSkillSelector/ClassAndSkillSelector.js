@@ -16,8 +16,14 @@ function ClassAndSkillSelector(props) {
         noValidate
         autoComplete="off"
       >
-        <CharactorSelector setSelected={setSelected}></CharactorSelector>
-        <SkillSelector selected={selected}></SkillSelector>
+        <CharactorSelector
+          setCharactorName={props.charactorName}
+          setSelected={setSelected}
+        ></CharactorSelector>
+        <SkillSelector
+          selected={selected}
+          skillName={props.skillName}
+        ></SkillSelector>
       </Box>
     </div>
   );

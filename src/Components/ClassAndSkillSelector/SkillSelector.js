@@ -9,6 +9,7 @@ function SkillSelector(props) {
 
   const handleChange = (event) => {
     setSkill(event.target.value);
+    props.skillName(classArray[props.selected][event.target.value]);
   };
 
   const amazonSkills = [
