@@ -148,6 +148,7 @@ function CalculatedTable(props) {
 
     return createData("elemental mastery(+ 8% large charm)", valueArray);
   };
+
   const MinDmgRow = () => {
     let valueArray;
     if (
@@ -166,6 +167,7 @@ function CalculatedTable(props) {
 
     return createData("min damage", valueArray);
   };
+
   const MaxDmgRow = () => {
     let valueArray;
     if (
@@ -184,6 +186,7 @@ function CalculatedTable(props) {
 
     return createData("max damage", valueArray);
   };
+
   const CalculatedDmgRow = () => {
     let minArray;
     if (
@@ -216,6 +219,7 @@ function CalculatedTable(props) {
 
     return createCalculatedData("calculated damage", minArray, maxArray);
   };
+
   const AverageDmgRow = () => {
     let minArray;
     if (
